@@ -66,7 +66,7 @@ const OnboardingScreen = ({ navigation }) => {
             {currentSlideIndex == 2 ? (
               <View>
                 <TouchableOpacity
-                  onPress={() => navigation.replace("Home")}
+                  onPress={() => navigation.replace("root")}
                   className="flex-1 h-[50px] rounded-md justify-center items-center bg-blue-500"
                 >
                   <Text className="font-bold text-white">Get Started</Text>

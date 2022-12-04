@@ -8,6 +8,7 @@ import { RecoilRoot } from "recoil";
 import HomeScreen from "./screens/HomeScreen";
 import { useEffect, useState } from "react";
 import SplashScreen from "./screens/SplashScreen";
+import TabNavigator from "./screens/navigations/TabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +24,7 @@ export default function App() {
               component={OnBoardingScreen}
             />
 
-            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="root" component={TabNavigator} />
           </Stack.Navigator>
         </TailwindProvider>
       </NavigationContainer>
