@@ -1,6 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
+
 const CheckupCard = () => {
   return (
     <ScrollView
