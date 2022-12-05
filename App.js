@@ -9,8 +9,12 @@ import HomeScreen from "./screens/HomeScreen";
 import { useEffect, useState } from "react";
 import SplashScreen from "./screens/SplashScreen";
 import TabNavigator from "./screens/navigations/TabNavigator";
+import { Amplify } from "aws-amplify";
+import awsconfig from "./aws-exports";
 
 const Stack = createNativeStackNavigator();
+
+Amplify.configure(awsconfig);
 
 export default function App() {
   return (
