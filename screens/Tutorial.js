@@ -3,8 +3,9 @@ import React from "react";
 
 const Tutorial = () => {
   return (
-    <SafeAreaView>
-      <Text>Tutorial</Text>
+    <SafeAreaView className="w-screen h-full flex items-center justify-center">
+      <Text>This Feature will Availabe Soon</Text>
+      <Text>Coming Soon</Text>
     </SafeAreaView>
   );
 };

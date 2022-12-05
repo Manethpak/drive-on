@@ -6,7 +6,7 @@ import CheckupCard from "../components/homeScreen/CheckupCard";
 import RecommandProductCard from "../components/homeScreen/RecommandProductCard";
 // import { SafeAreaView } from "react-native-safe-area-context";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView className="mx-4 mt-10">
       <ScrollView
@@ -17,7 +17,7 @@ const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
       >
         <Text className="text-2xl font-bold ">Your Vehicle </Text>
-        <VehicleCard />
+        <VehicleCard navigation={navigation} />
         <Text className="text-2xl pt-6 font-bold ">Quick Checkup </Text>
         <CheckupCard />
         <Text className="text-2xl pt-6 font-bold ">Recommanded Product </Text>

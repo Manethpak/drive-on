@@ -2,7 +2,7 @@ import { View, Text, Image, Dimensions, TouchableOpacity } from "react-native";
 import React from "react";
 import Tesla from "../../assets/tesla.png";
 
-const VehicleCard = () => {
+const VehicleCard = ({ navigation }) => {
   const { width, height } = Dimensions.get("window");
 
   return (
@@ -31,6 +31,7 @@ const VehicleCard = () => {
         <View className="flex justify-end items-end">
           <TouchableOpacity
             className="mt-10 bg-blue-500 rounded-md"
+            onPress={() => navigation.push("VehicleDetail")}
             style={{
               width: 110,
             }}

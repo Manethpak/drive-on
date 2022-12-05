@@ -9,6 +9,7 @@ import HomeScreen from "./screens/HomeScreen";
 import { useEffect, useState } from "react";
 import SplashScreen from "./screens/SplashScreen";
 import TabNavigator from "./screens/navigations/TabNavigator";
+import VehicleDetail from "./screens/VehicleDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,7 @@ export default function App() {
             />
 
             <Stack.Screen name="root" component={TabNavigator} />
+            <Stack.Screen name="VehicleDetail" component={VehicleDetail} />
           </Stack.Navigator>
         </TailwindProvider>
       </NavigationContainer>
