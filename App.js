@@ -11,6 +11,7 @@ import SplashScreen from "./screens/SplashScreen";
 import TabNavigator from "./screens/navigations/TabNavigator";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
+import VehicleDetail from "./screens/VehicleDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
             />
 
             <Stack.Screen name="root" component={TabNavigator} />
+            <Stack.Screen name="VehicleDetail" component={VehicleDetail} />
           </Stack.Navigator>
         </TailwindProvider>
       </NavigationContainer>
