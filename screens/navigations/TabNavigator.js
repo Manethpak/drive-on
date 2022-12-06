@@ -46,11 +46,7 @@ const TabNavigator = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    position: "absolute",
     padding: 0,
-    right: 16,
-    left: 16,
-    bottom: 20,
     height: 56,
     borderRadius: 15,
     borderTopColor: "transparent",
