@@ -18,9 +18,9 @@ const HomeScreen = ({ navigation }) => {
       >
         <Text className="text-2xl font-bold ">Your Vehicle </Text>
         <VehicleCard navigation={navigation} />
-        <Text className="text-2xl pt-6 font-bold ">Quick Checkup </Text>
+        <Text className="text-xl pt-6 font-bold ">Quick Checkup </Text>
         <CheckupCard />
-        <Text className="text-2xl pt-6 font-bold ">Recommanded Product </Text>
+        <Text className="text-xl pt-6 font-bold ">Recommanded Product </Text>
         <RecommandProductCard />
       </ScrollView>
     </SafeAreaView>
