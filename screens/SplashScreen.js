@@ -9,6 +9,9 @@ import {
 import React, { useEffect, useRef } from "react";
 import Logo from "../assets/logo.png";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { getItem } from "../utils/asyncStorage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 const SplashScreen = ({ navigation }) => {
   const { width, height } = Dimensions.get("window");
   const edges = useSafeAreaInsets();
@@ -17,7 +20,7 @@ const SplashScreen = ({ navigation }) => {
   const scaleTitle = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    setTimeout(() => {
+    setTimeout(async () => {
       Animated.sequence([
         Animated.timing(startAnimation, {
           toValue: height + (edges.top + 65),
@@ -32,7 +35,12 @@ const SplashScreen = ({ navigation }) => {
           useNativeDriver: true,
         }),
       ]).start();
-      navigation.replace("OnboardingScreen");
+
+      if (await getItem("@onboard")) {
+        navigation.replace("root");
+      } else {
+        navigation.replace("OnboardingScreen");
+      }
     }, 1500);
   }, []);
 

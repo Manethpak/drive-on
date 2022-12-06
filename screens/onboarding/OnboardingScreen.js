@@ -6,34 +6,45 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { onBoardings } from "../../utils/onBoardingData";
 import Slide from "../../components/onboarding/Slide";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { offsetState, onBoardingState } from "../../atoms/onBoardingState";
-import Footer from "../../components/onboarding/Footer";
+import { onBoardingState } from "../../atoms/onBoardingState";
+import { useRecoilState } from "recoil";
+import { setItem } from "../../utils/asyncStorage";
 
 const OnboardingScreen = ({ navigation }) => {
   const { width, height } = Dimensions.get("window");
   const [currentSlideIndex, setCurrentSlideIndex] =
     useRecoilState(onBoardingState);
   const ref = useRef(null);
+
   const updateCurrentSlideIndex = (e) => {
     const contentOffsetX = e.nativeEvent.contentOffset.x;
     const currentIndex = Math.round(contentOffsetX / width);
     setCurrentSlideIndex(currentIndex);
   };
+
   const goNextSlide = () => {
     const nextSlideIndex = currentSlideIndex + 1;
     if (nextSlideIndex != 3) {
       const offset = nextSlideIndex * width;
       ref?.current?.scrollToOffset({ offset });
     }
+    setCurrentSlideIndex(nextSlideIndex);
   };
+
   const skip = () => {
     const offset = 2 * width;
     ref?.current?.scrollToOffset({ offset });
+    setCurrentSlideIndex(2);
   };
+
+  const exitOnboarding = async () => {
+    await setItem("@onboard", "true");
+    navigation.replace("root");
+  };
+
   return (
     <SafeAreaView>
       <View className="flex justify-center items-center w-full h-full">
@@ -66,7 +77,7 @@ const OnboardingScreen = ({ navigation }) => {
             {currentSlideIndex == 2 ? (
               <View>
                 <TouchableOpacity
-                  onPress={() => navigation.replace("root")}
+                  onPress={exitOnboarding}
                   className="flex-1 h-[50px] rounded-md justify-center items-center bg-blue-500"
                 >
                   <Text className="font-bold text-white">Get Started</Text>
