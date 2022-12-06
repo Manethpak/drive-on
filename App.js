@@ -13,6 +13,7 @@ import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import VehicleDetail from "./screens/VehicleDetail";
 import TutorialDetailScreen from "./screens/TutorialDetailScreen";
+import SelectVehicle from "./screens/SelectVehicle";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ export default function App() {
               component={OnBoardingScreen}
             />
 
+            <Stack.Screen name="SelectVehicle" component={SelectVehicle} />
             <Stack.Screen name="root" component={TabNavigator} />
             <Stack.Screen name="VehicleDetail" component={VehicleDetail} />
             <Stack.Screen
