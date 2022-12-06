@@ -12,6 +12,7 @@ import TabNavigator from "./screens/navigations/TabNavigator";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import VehicleDetail from "./screens/VehicleDetail";
+import TutorialDetailScreen from "./screens/TutorialDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,10 @@ export default function App() {
 
             <Stack.Screen name="root" component={TabNavigator} />
             <Stack.Screen name="VehicleDetail" component={VehicleDetail} />
+            <Stack.Screen
+              name="TutorialDetailScreen"
+              component={TutorialDetailScreen}
+            />
           </Stack.Navigator>
         </TailwindProvider>
       </NavigationContainer>
