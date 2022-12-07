@@ -10,8 +10,9 @@ const Tutorial = ({ navigation }) => {
       setTutorial(data);
     });
   }, []);
+
   return (
-    <SafeAreaView className="w-screen h-full flex ">
+    <SafeAreaView className="w-screen h-full flex mt-10 mx-5">
       <Search />
       <Text className="px-4 py-3 text-lg font-bold">Tutorial</Text>
       <ScrollView

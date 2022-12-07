@@ -11,6 +11,8 @@ import { useNavigation } from "@react-navigation/native";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import { Auth } from "aws-amplify";
+import { useRecoilState } from "recoil";
+import { userData } from "../../atoms/userData";
 
 export default function SignInScreen() {
   const { width, height } = useWindowDimensions();
@@ -19,10 +21,13 @@ export default function SignInScreen() {
   const [phone, setPhone] = useState("+855");
   const [password, setPassword] = useState("");
 
+  const [user, setUser] = useRecoilState(userData);
+
   const onSignIn = async () => {
     try {
-      await Auth.signIn(phone, password);
+      const authuser = await Auth.signIn(phone, password);
       navigation.navigate("root");
+      setUser(authuser);
     } catch (e) {
       Alert.alert("Oops", e.message || "Something went wrong");
     }

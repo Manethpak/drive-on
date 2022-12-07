@@ -6,7 +6,7 @@ const Search = () => {
   return (
     <View className="my-3 px-4">
       <View className="flex-row space-x-2 flex-1 rounded-lg bg-gray-200 p-3">
-        <MagnifyingGlassIcon className="text-gray-200 " />
+        <MagnifyingGlassIcon color="gray" size={24} />
         <TextInput placeholder="Search something ....." />
       </View>
     </View>

@@ -6,19 +6,31 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useLayoutEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
 import VehicleCard from "../components/homeScreen/VehicleCard";
 import CheckupCard from "../components/homeScreen/CheckupCard";
 import RecommandProductCard from "../components/homeScreen/RecommandProductCard";
 import { useRecoilValue } from "recoil";
 import { checkData } from "../atoms/checkupData";
-import { ChevronRightIcon } from "react-native-heroicons/solid";
-// import { SafeAreaView } from "react-native-safe-area-context";
+import { PlusCircleIcon, UserCircleIcon } from "react-native-heroicons/solid";
+import { userData } from "../atoms/userData";
 
 const HomeScreen = ({ navigation }) => {
   const data = useRecoilValue(checkData);
+  const user = useRecoilValue(userData);
+
   return (
     <SafeAreaView className="mx-4 mt-10">
+      <View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Profile")}
+          className="flex flex-row justify-end items-center my-3"
+        >
+          <Text className="text-lg font-bold mr-2">
+            Hi, {user.attributes.preferred_username}
+          </Text>
+          <UserCircleIcon color="gray" size={40} />
+        </TouchableOpacity>
+      </View>
       <ScrollView
         contentContainerStyle={{
           paddingBottom: 0,
@@ -26,7 +38,14 @@ const HomeScreen = ({ navigation }) => {
         vertical
         showsVerticalScrollIndicator={false}
       >
-        <Text className="text-2xl font-bold ">Your Vehicle </Text>
+        <View className="flex flex-row justify-between items-center">
+          <Text className="text-2xl font-bold ">Your Vehicle </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("SelectVehicle")}
+          >
+            <PlusCircleIcon color="gray" size={30} />
+          </TouchableOpacity>
+        </View>
         <VehicleCard navigation={navigation} />
         <Text className="text-xl pt-6 font-bold ">Quick Checkup </Text>
 

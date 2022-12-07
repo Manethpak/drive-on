@@ -20,18 +20,18 @@ const ProductScreen = ({ navigation }) => {
     });
   }, []);
   return (
-    <SafeAreaView className="w-screen h-full flex my-3 mx-2">
+    <SafeAreaView className="w-screen h-full flex my-10 mx-5">
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         className=" flex flex-row items-center"
       >
-        <ChevronLeftIcon />
+        <ChevronLeftIcon color="gray" size={24} />
         <Text>Back</Text>
       </TouchableOpacity>
       <Search />
       <View className="flex flex-row-reverse justify-center items-center mx-2">
         {product.map(
-          ({  _id, image, title, estimate_price, store, description }) => {
+          ({ _id, image, title, estimate_price, store, description }) => {
             return (
               <TouchableOpacity
                 key={_id}
