@@ -14,6 +14,8 @@ import awsconfig from "./aws-exports";
 import VehicleDetail from "./screens/VehicleDetail";
 import TutorialDetailScreen from "./screens/TutorialDetailScreen";
 import SelectVehicle from "./screens/SelectVehicle";
+import ProductScreen from "./screens/ProductScreen";
+import ProductDetail from "./screens/ProductDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,8 @@ export default function App() {
             />
 
             <Stack.Screen name="SelectVehicle" component={SelectVehicle} />
+            <Stack.Screen name="ProductScreen" component={ProductScreen} />
+            <Stack.Screen name="ProductDetail" component={ProductDetail} />
             <Stack.Screen name="root" component={TabNavigator} />
             <Stack.Screen name="VehicleDetail" component={VehicleDetail} />
             <Stack.Screen
