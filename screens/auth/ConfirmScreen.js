@@ -33,7 +33,7 @@ const ConfirmScreen = () => {
   async function confirmSignUp() {
     try {
       await Auth.confirmSignUp(phone, code);
-      navigation.replace("SignInScreen");
+      navigation.replace("SplashScreen");
     } catch (error) {
       console.log("error confirming sign up", error);
     }
