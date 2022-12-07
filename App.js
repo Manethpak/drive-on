@@ -12,6 +12,10 @@ import SignInScreen from "./screens/auth/SignInScreen";
 import SignUpScreen from "./screens/auth/SignUpScreen";
 import ReVerifyScreen from "./screens/auth/ReVerifyScreen";
 import ConfirmScreen from "./screens/auth/ConfirmScreen";
+import TutorialDetailScreen from "./screens/TutorialDetailScreen";
+import SelectVehicle from "./screens/SelectVehicle";
+import ProductScreen from "./screens/ProductScreen";
+import ProductDetail from "./screens/ProductDetail";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,8 +38,15 @@ export default function App() {
             <Stack.Screen name="ReVerifyScreen" component={ReVerifyScreen} />
             <Stack.Screen name="ConfirmScreen" component={ConfirmScreen} />
 
+            <Stack.Screen name="SelectVehicle" component={SelectVehicle} />
+            <Stack.Screen name="ProductScreen" component={ProductScreen} />
+            <Stack.Screen name="ProductDetail" component={ProductDetail} />
             <Stack.Screen name="root" component={TabNavigator} />
             <Stack.Screen name="VehicleDetail" component={VehicleDetail} />
+            <Stack.Screen
+              name="TutorialDetailScreen"
+              component={TutorialDetailScreen}
+            />
           </Stack.Navigator>
         </TailwindProvider>
       </NavigationContainer>

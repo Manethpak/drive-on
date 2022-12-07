@@ -1,10 +1,20 @@
-import { View, Text, ScrollView, Image } from "react-native";
-import React from "react";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
 import Product1 from "../../assets/product/product1.png";
 import Product2 from "../../assets/product/product2.png";
 import Product3 from "../../assets/product/product3.png";
+import sanityClient, { urlFor } from "../../sanity";
+import { useRecoilState } from "recoil";
+import { useNavigation } from "@react-navigation/native";
 
 const RecommandProductCard = () => {
+  const navigation = useNavigation();
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    sanityClient.fetch(`*[_type=="product" ]`).then((data) => {
+      setProduct(data);
+    });
+  }, []);
   return (
     <ScrollView
       contentContainerStyle={{
@@ -14,32 +24,34 @@ const RecommandProductCard = () => {
       horizontal
       showsHorizontalScrollIndicator={false}
     >
-      <View className="flex flex-row mt-4 " style={{ height: 300 }}>
-        <View className="mr-3 flex flex-col">
-          <Image
-            classNamemt="mt-6 border border-blue-500"
-            source={Product1}
-            style={{ width: 200, height: 200 }}
-          />
-          <Text className="font-bold p-2 text-sm">Cleaning Fluid</Text>
-        </View>
-        <View className="mr-3 flex flex-col">
-          <Image
-            classNamemt="mt-6 border border-blue-500"
-            source={Product2}
-            style={{ width: 200, height: 200 }}
-          />
-          <Text className="font-bold p-1 text-sm">Cleaning Fluid</Text>
-        </View>
-        <View className="mr-3 flex flex-col">
-          <Image
-            classNamemt="mt-6 border border-blue-500"
-            source={Product3}
-            style={{ width: 200, height: 200 }}
-          />
-          <Text className="font-bold p-2 text-sm">Cleaning Fluid</Text>
-        </View>
-      </View>
+      {product.map(
+        ({ _id, image, title, estimate_price, store, description }) => {
+          return (
+            <TouchableOpacity
+              key={_id}
+              onPress={() =>
+                navigation.navigate("ProductDetail", {
+                  _id,
+                  image,
+                  title,
+                  estimate_price,
+                  store,
+                  description,
+                })
+              }
+              className="w-[200px] h-42 m-1"
+            >
+              <View>
+                <Image
+                  source={{ uri: urlFor(image).url() }}
+                  className="h-36 w-full rounded-lg"
+                />
+              </View>
+              <Text className="mx-2">{title}</Text>
+            </TouchableOpacity>
+          );
+        }
+      )}
     </ScrollView>
   );
 };
