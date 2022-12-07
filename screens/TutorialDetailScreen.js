@@ -8,12 +8,13 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { urlFor } from "../sanity";
+import sanityClient, { urlFor } from "../sanity";
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import moment from "moment";
 
 const TutorialDetailScreen = () => {
   const navigation = useNavigation();
+  const [tutorial, setTutorial] = useState([]);
   const [currentDate, setCurrentDate] = useState("");
   const {
     params: {
@@ -26,7 +27,13 @@ const TutorialDetailScreen = () => {
       author,
     },
   } = useRoute();
+
   useEffect(() => {
+    sanityClient
+      .fetch(`*[_type=="tutorial"  && _id == $id  ][0]`, { id })
+      .then((data) => {
+        setTutorial(data);
+      });
     const date = moment(published_at).fromNow();
     setCurrentDate(date);
   }, []);

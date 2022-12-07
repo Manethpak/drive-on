@@ -13,14 +13,6 @@ const TutorialCard = ({
   author,
   navigation,
 }) => {
-  const [tutorial, setTutorial] = useState([]);
-  useEffect(() => {
-    sanityClient
-      .fetch(`*[_type=="tutorial"  && _id == $id  ][0]`, { id })
-      .then((data) => {
-        setTutorial(data);
-      });
-  }, []);
   return (
     <TouchableOpacity
       onPress={() =>

@@ -1,4 +1,10 @@
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import VehicleCard from "../components/homeScreen/VehicleCard";
@@ -6,6 +12,7 @@ import CheckupCard from "../components/homeScreen/CheckupCard";
 import RecommandProductCard from "../components/homeScreen/RecommandProductCard";
 import { useRecoilValue } from "recoil";
 import { checkData } from "../atoms/checkupData";
+import { ChevronRightIcon } from "react-native-heroicons/solid";
 // import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeScreen = ({ navigation }) => {
@@ -14,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
     <SafeAreaView className="mx-4 mt-10">
       <ScrollView
         contentContainerStyle={{
-          paddingBottom: 100,
+          paddingBottom: 0,
         }}
         vertical
         showsVerticalScrollIndicator={false}
@@ -42,7 +49,12 @@ const HomeScreen = ({ navigation }) => {
             ))}
           </View>
         )}
-        <Text className="text-xl pt-6 font-bold ">Recommanded Product </Text>
+        <View className=" mt-6 flex flex-row justify-between items-center">
+          <Text className="text-xl  font-bold">Recommanded Product </Text>
+          <TouchableOpacity onPress={() => navigation.push("ProductScreen")}>
+            <Text className="font-bold text-blue-500">See more</Text>
+          </TouchableOpacity>
+        </View>
         <RecommandProductCard />
       </ScrollView>
     </SafeAreaView>
