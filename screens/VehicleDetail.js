@@ -12,8 +12,8 @@ import { ChevronLeftIcon } from "react-native-heroicons/solid";
 
 const VehicleDetail = ({ navigation }) => {
   return (
-    <SafeAreaView className="">
-      <View className="flex flex-row justify-between items-center px-3 mt-2">
+    <SafeAreaView className="mt-5">
+      <View className="flex flex-row justify-between items-center mt-2">
         <TouchableOpacity onPress={() => navigation.goBack(null)}>
           <ChevronLeftIcon className="text-black" />
         </TouchableOpacity>

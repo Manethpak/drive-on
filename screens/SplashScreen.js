@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from "react";
 import Logo from "../assets/logo.png";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { getItem } from "../utils/asyncStorage";
+import { userData } from "../atoms/userData";
+import { useRecoilState } from "recoil";
 import { Auth } from "aws-amplify";
 
 const SplashScreen = ({ navigation }) => {
@@ -11,6 +13,8 @@ const SplashScreen = ({ navigation }) => {
   const startAnimation = useRef(new Animated.Value(0)).current;
   const scaleLogo = useRef(new Animated.Value(1)).current;
   const scaleTitle = useRef(new Animated.Value(1)).current;
+
+  const [user, setUser] = useRecoilState(userData);
 
   useEffect(() => {
     setTimeout(async () => {
@@ -31,8 +35,7 @@ const SplashScreen = ({ navigation }) => {
 
       if (await getItem("@onboard")) {
         try {
-          const user = await Auth.currentAuthenticatedUser();
-          if (user) {
+          if (await Auth.currentAuthenticatedUser()) {
             navigation.replace("root");
           }
         } catch (e) {
@@ -42,6 +45,18 @@ const SplashScreen = ({ navigation }) => {
         navigation.replace("OnboardingScreen");
       }
     }, 1500);
+  }, []);
+
+  useEffect(() => {
+    const authUser = async () => {
+      try {
+        const res = await Auth.currentAuthenticatedUser();
+        setUser(res);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    authUser();
   }, []);
 
   return (

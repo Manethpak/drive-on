@@ -65,7 +65,7 @@ const Checkup = () => {
         <View className=" my-5 flex flex-row justify-between items-center py-5">
           <Text className="font-bold text-xl">Check Your Vehicle</Text>
           <TouchableOpacity onPress={handlePresentModal}>
-            <PlusIcon />
+            <PlusIcon color="gray" size={24} />
           </TouchableOpacity>
         </View>
         <ScrollView

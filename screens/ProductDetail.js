@@ -26,12 +26,12 @@ const ProductDetail = () => {
       });
   }, []);
   return (
-    <SafeAreaView className="m-5">
+    <SafeAreaView className="my-10 mx-5">
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         className="flex flex-row items-center "
       >
-        <ChevronLeftIcon />
+        <ChevronLeftIcon color="gray" size={24} />
         <Text className="px-2 font-bold text-lg py-4">{title}</Text>
       </TouchableOpacity>
       <View>
