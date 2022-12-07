@@ -34,25 +34,28 @@ const ConfirmScreen = () => {
         <ChevronLeftIcon color="gray" size={30} />
       </TouchableOpacity>
 
-      <View>
-        <Text className="text-4xl font-bold">Verify Phone</Text>
-        <Text className="text-sm text-gray-500 my-2">
-          We have sent a code to your phone number. Please enter the code below
-        </Text>
+      <View className="px-5">
+        <View>
+          <Text className="text-4xl font-bold">Verify Phone</Text>
+          <Text className="text-sm text-gray-500 my-6 ">
+            We have sent a code to your phone number. Please enter the code
+            below
+          </Text>
 
-        <Input
-          label="Phone Number"
-          keyboardType="numeric"
-          value={phone}
-          onChangeText={(v) => {
-            if (v[0] == "+") {
-              setPhone(v);
-            }
-          }}
-        />
+          <Input
+            label="Phone Number"
+            keyboardType="numeric"
+            value={phone}
+            onChangeText={(v) => {
+              if (v[0] == "+") {
+                setPhone(v);
+              }
+            }}
+          />
 
-        <View className="mt-5">
-          <Button onPress={resendConfirmationCode}>Send Code</Button>
+          <View className="mt-5">
+            <Button onPress={resendConfirmationCode}>Send Code</Button>
+          </View>
         </View>
       </View>
     </SafeAreaView>
