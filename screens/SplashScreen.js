@@ -1,16 +1,9 @@
-import {
-  Animated,
-  Image,
-  View,
-  Text,
-  SafeAreaView,
-  Dimensions,
-} from "react-native";
+import { Animated, View, Dimensions } from "react-native";
 import React, { useEffect, useRef } from "react";
 import Logo from "../assets/logo.png";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { getItem } from "../utils/asyncStorage";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Auth } from "aws-amplify";
 
 const SplashScreen = ({ navigation }) => {
   const { width, height } = Dimensions.get("window");
@@ -37,7 +30,14 @@ const SplashScreen = ({ navigation }) => {
       ]).start();
 
       if (await getItem("@onboard")) {
-        navigation.replace("root");
+        try {
+          const user = await Auth.currentAuthenticatedUser();
+          if (user) {
+            navigation.replace("root");
+          }
+        } catch (e) {
+          navigation.replace("SignInScreen");
+        }
       } else {
         navigation.replace("OnboardingScreen");
       }

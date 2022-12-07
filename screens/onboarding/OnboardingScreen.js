@@ -42,7 +42,7 @@ const OnboardingScreen = ({ navigation }) => {
 
   const exitOnboarding = async () => {
     await setItem("@onboard", "true");
-    navigation.replace("root");
+    navigation.replace("SignInScreen");
   };
 
   return (
