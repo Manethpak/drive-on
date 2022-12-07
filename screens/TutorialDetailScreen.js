@@ -40,7 +40,7 @@ const TutorialDetailScreen = () => {
   return (
     <SafeAreaView className="m-2">
       <View className="mt-3 flex flex-row  justify-between ">
-        <TouchableOpacity onPress={() => navigation.goBack()} className>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <View className="flex flex-row  items-center">
             <ChevronLeftIcon />
             <Text>back</Text>

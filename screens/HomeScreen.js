@@ -38,7 +38,14 @@ const HomeScreen = ({ navigation }) => {
             <Text className="font-bold">You don't have data yet</Text>
           </View>
         ) : (
-          <View>
+          <ScrollView
+            contentContainerStyle={{
+              paddingHorizontal: 5,
+              paddingTop: 10,
+            }}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          >
             {data.map((item) => (
               <CheckupCard
                 key={item.id}
@@ -47,7 +54,7 @@ const HomeScreen = ({ navigation }) => {
                 estimate_date={item.estimate_date}
               />
             ))}
-          </View>
+          </ScrollView>
         )}
         <View className=" mt-6 flex flex-row justify-between items-center">
           <Text className="text-xl  font-bold">Recommanded Product </Text>
