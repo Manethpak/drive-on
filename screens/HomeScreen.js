@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
           className="flex flex-row justify-end items-center my-3"
         >
           <Text className="text-lg font-bold mr-2">
-            Hi, {user.attributes.preferred_username}
+            Hi, {user?.attributes.preferred_username}
           </Text>
           <UserCircleIcon color="gray" size={40} />
         </TouchableOpacity>
